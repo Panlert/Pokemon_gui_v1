@@ -1,0 +1,92 @@
+import java.util.Scanner;
+public class Pokemongame{
+    public static int eat,faimt,run;
+    public static String comman;
+    public static void main(String[] args){
+        System.out.printf("Do you want to catch Pokémon?Y/N: ");
+        Scanner sc = new Scanner(System.in);
+        comman = sc.nextLine();
+        User n = new User();
+        n.pokemonCATCH(comman);
+        sc.close();
+        //n.berryEat();
+        //n.pokemonSTATUS();
+    }
+}
+----------------------------------------------------------------------------------
+public class User{
+    public static String pokemonNAME;
+    public static int pokeball = 15;
+    public static int berry,lastberry;
+
+    public void pokemonCATCH(String ynq){
+        if("Y".equals(ynq)){
+            if(berry < lastberry)
+                get_Pokemon(Math.random());
+            else{
+                if(Math.random() > 0.70)
+                    get_Pokemon(Math.random());
+                else{
+                    System.out.println("Fail");
+                    pokeball--;
+                    System.out.println("You have "+pokeball+" pokeball left");
+                }
+            }
+        }else
+            System.out.println("See you next time.");
+    }
+    //public void pokemonFEED(int berryin){
+    //}
+
+    public void get_Pokemon(Double x){
+        if(x >= 0.5){
+            pokemonNAME = "pikachu";
+            System.out.println("You received "+pokemonNAME);
+        }else{
+            pokemonNAME = "kingkong";
+            System.out.println("You received "+pokemonNAME);
+        }
+        pokeball--;
+        System.out.println("You have "+pokeball+" pokeball left");
+    }
+}
+----------------------------------------------------------------------------------------------------
+
+public class Pokemon{
+    
+    public static int HP,MP,atkDMG;
+    public static int pokemonLV=1;
+    public static int oldLV=1;
+
+    public static void berryEat(int eat){ 
+        if(eat > 0){
+            System.out.println("Pokemon sleep..zZZ");
+        }
+    }
+   /* public static void lvUP(int pokemonLV){
+        //int i=0;
+        while(pokemonLV != oldLV){
+            HP += 50;
+            MP += 20;
+            atkDMG += 10;
+            oldLV++;
+           // i++;
+        }
+        System.out.println("Your pokemon lv.up!");
+        //System.out.println("lv = "+i);
+    }
+
+    public static void pokemonSTATUS(){
+        System.out.println("HP= "+HP);
+        System.out.println("MP= "+MP);
+        System.out.println("AttackDamage= "+atkDMG);
+        System.out.println("LV= "+pokemonLV);
+    }
+    public static int pokemonFIGHT(int dmg, int hp){
+        while(hp != 0){
+            hp -= atkDMG;
+            HP -= dmg;
+            if(HP <= 0)  
+        }
+    }*/
+}
