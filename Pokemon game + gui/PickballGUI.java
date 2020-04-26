@@ -33,12 +33,13 @@ public class PickballGUI extends JFrame
         frame.setResizable(false);
         frame.setSize(400,200);
         //frame.setLocationRelativeTo(null);
+        PicAndGif g = new PicAndGif();
 
         final JPanel comboPanel = new JPanel();
         JLabel headTEXT = new JLabel(" Choose your first Pokemon. ");
         comboPanel.add(headTEXT);
         
-        ImageIcon Icon = new ImageIcon("D:/Game online/PSU file/file.java/basicGUI/pokeball.jpg");
+        ImageIcon Icon = new ImageIcon(g.getPicAndGif(26));
         JButton p1 = new JButton();
         JButton p2 = new JButton();
         JButton p3 = new JButton();

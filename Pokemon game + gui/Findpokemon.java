@@ -32,7 +32,7 @@ public class Findpokemon extends JFrame{
         bg1.setBounds(120, 20, 176, 176);
 
         JButton confirm = new JButton("Continue");
-        confirm.setBounds(100, 230, 110, 40);
+        confirm.setBounds(150, 230, 110, 40);
         confirm.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent actionEvent) {

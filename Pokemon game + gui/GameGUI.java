@@ -16,7 +16,7 @@ public class GameGUI extends JFrame
     public String getBagCmd(){
         return this.bagCmd;
     }
-    private void setBagCmd(String cmd){
+    public void setBagCmd(String cmd){
         this.bagCmd = cmd;
     }
     public String resetCmd(){
@@ -46,21 +46,23 @@ public class GameGUI extends JFrame
 
     //------bag--------------------------------------------------
         ImageIcon ImgBag = new ImageIcon(g.getPicAndGif(7));
-        JToggleButton bag = new JToggleButton(ImgBag,true);
+        JToggleButton bag = new JToggleButton(ImgBag);
         bag.setBounds(10, 10, 80, 80);
         bag.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if(bag.isSelected()){
-                    bag.setSelectedIcon(new ImageIcon(g.getPicAndGif(8)));
-                    pic.add(bag);
-                    c.add(pic);
-                    frame.add(c);
-                    pack();
-                    setBagCmd("openbag");
+
+                if(bag.isSelected() && getBagCmd().equals("openbag")){
+                    bag.setIcon(new ImageIcon(g.getPicAndGif(8)));
+                    SwingUtilities.updateComponentTreeUI(frame);
+                }else if(bag.isSelected() && getBagCmd().equals("close")){
+                    bag.doClick();
                 }else{
-                    setBagCmd("close");
+                    bag.setIcon(new ImageIcon(g.getPicAndGif(7)));
+                    SwingUtilities.updateComponentTreeUI(frame);
+                    setBagCmd("");
                 }
+                setBagCmd("openbag");
             }
         });
     //-----------------------------------------------------------

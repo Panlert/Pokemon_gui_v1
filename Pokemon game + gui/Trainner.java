@@ -3,7 +3,6 @@ import javax.swing.*;
 public class Trainner extends JFrame{
     private BagGUI bag;
     
-    
     public Trainner(){
         this.bag = new BagGUI();
         bag.add(getfirstPOKEMON());
@@ -23,12 +22,7 @@ public class Trainner extends JFrame{
         PickballGUI g = new PickballGUI();
         while(!(g.getCmd().equals("close"))){
             System.out.println(g.getCmd());
-            try{
-                Thread.sleep(2000);
-            }
-            catch(InterruptedException ex){
-                Thread.currentThread().interrupt();
-            }
+            delay(2000);
             if(g.getPokeballIndex() == 1 && g.getCmd().equals("close")){
                 p = new Charmander("Squirtle");
             }else if(g.getPokeballIndex() == 2 && g.getCmd().equals("close")){
@@ -49,29 +43,24 @@ public class Trainner extends JFrame{
         cmd = play.getCmd();
         while(!(cmd.equals("quit"))){
             System.out.println("Frame playing.");
-            try{
-                Thread.sleep(2000);
-            }
-            catch(InterruptedException ex){
-                Thread.currentThread().interrupt();
-            }
+            delay(2000);
             cmd = play.getCmd();
             bagCmd = play.getBagCmd();
 
             if(bagCmd.equals("openbag")){
                 openBag("open");
-                bagCmd = play.resetCmd();
+                play.setBagCmd("open");
             }
 
             if(cmd.equals("status")){
                 choosePokeball(cmd).toStringStatus();
                 cmd = play.resetCmd();
             }
-            if(cmd.equals("feed")){
+            else if(cmd.equals("feed")){
                 feed(choosePokeball(cmd));
                 cmd = play.resetCmd();
             }
-            if(cmd.equals("findPokemon")){
+            else if(cmd.equals("findPokemon")){
                 Pokemon e;
                 JOptionPane ms = new JOptionPane();
                 e = pokemonSURVAY();
@@ -93,8 +82,10 @@ public class Trainner extends JFrame{
                     }
                 }
             }
-            else
+            else{
                 cmd = play.resetCmd();
+                play.setBagCmd("close");
+            }
         }
         System.out.println("quit game");   
     }
@@ -106,14 +97,9 @@ public class Trainner extends JFrame{
         int yN=-1;
         while(!(f.getCmd().equals("close"))){
             System.out.println("random...");
-            try{
-                Thread.sleep(1000);
-            }
-            catch(InterruptedException ex){
-                Thread.currentThread().interrupt();
-            }
+            delay(500);
         }
-        if(Math.random() >= 0.5){
+        /*if(Math.random() >= 0.5){
             e = new PokemonC();
         }
         else if (Math.random() >= 0.2 && Math.random() < 0.5){
@@ -133,22 +119,23 @@ public class Trainner extends JFrame{
                 return null;
         }
         else if(e.toString().equals("B")){
-            yN = JOptionPane.showConfirmDialog ( ms, "Your found pokemon rank A.\nYou want to catch it?", "found it!", JOptionPane.YES_NO_OPTION );
+            yN = JOptionPane.showConfirmDialog ( ms, "Your found pokemon rank B.\nYou want to catch it?", "found it!", JOptionPane.YES_NO_OPTION );
             if(yN==0){
                 JOptionPane.showMessageDialog ( ms, "Choose your pokeball." );
                 return e;
             }
             else 
                 return null;   
-        }
-        else{
+        }*/
+        e = new PokemonC();
+        //else{
             if(JOptionPane.showConfirmDialog ( ms, "Your found pokemon rank C.\nYou want to catch it?", "found it!", JOptionPane.YES_NO_OPTION )==0){
                 JOptionPane.showMessageDialog ( ms, "Choose your pokeball." );
                 return e;
             }
             else 
                 return null;
-        }
+        //}
     }
     
     private void feed(Pokemon p){
@@ -188,12 +175,7 @@ public class Trainner extends JFrame{
 
         while(!bag.getCmd().equals("close")){
             System.out.println("Selecting");
-            try{
-                Thread.sleep(1000);
-            }
-            catch(InterruptedException ex){
-                Thread.currentThread().interrupt();
-            }
+            delay(1000);
         }
         return bag.getChoose();
     }
@@ -207,12 +189,15 @@ public class Trainner extends JFrame{
             if(player.equals("zeroHP")){
                 System.out.println("You lose");
                 resetStatus(p);
-                p.loseExp(e.getExp());
                 resetStatus(e);
                 Duelfield d = new Duelfield(p, e);
                 while(!(d.getCmd().equals("close"))){
                     System.out.println("fighting...");
+                    delay(2000);
                 }
+                resetStatus(p);
+                resetStatus(e);
+                p.loseExp(e.getExp());
                 return false;
             }
             else if(enemy.equals("zeroHP")){
@@ -224,19 +209,17 @@ public class Trainner extends JFrame{
                 p.lvUp(e.getExp());
                 while(!(d.getCmd().equals("close"))){
                     System.out.println("fighting...");
-                    try{
-                        Thread.sleep(2000);
-                    }
-                    catch(InterruptedException ex){
-                        Thread.currentThread().interrupt();
-                    }
+                    delay(2000);
                 }
+                resetStatus(p);
+                resetStatus(e);
                 return true;
+            }else{
+                System.out.println("Enemy hp = "+ e.getHPtoString());
+                enemy = e.getAttack(p.attack());
+                System.out.println("Your Pokemon hp = "+p.getHPtoString());
+                player = p.getAttack(e.attack());
             }
-            System.out.println("Enemy hp = "+ e.getHPtoString());
-            enemy = e.getAttack(p.attack());
-            System.out.println("Your Pokemon hp = "+p.getHPtoString());
-            player = p.getAttack(e.attack());
         }
 
         //CatchGUI c = new CatchGUI(attackRound);
@@ -248,6 +231,15 @@ public class Trainner extends JFrame{
         int MP=p.getoMP();
         int Atk=p.getoAtkDmg();
         p.setStatus(HP, MP, Atk);
+    }
+
+    public void delay(int i){
+        try{
+            Thread.sleep(i);
+        }
+        catch(InterruptedException ex){
+            Thread.currentThread().interrupt();
+        }
     }
 
 }

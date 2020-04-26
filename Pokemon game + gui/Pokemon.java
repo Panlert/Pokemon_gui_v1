@@ -29,6 +29,9 @@ public abstract class Pokemon{
     }
     public void loseExp(int exp){
         this.exp -= exp;
+        if(this.exp < 0 && this.lv == 1)
+            this.exp += exp;
+        
         statusSAVE();
     }
     public int getExp(){
