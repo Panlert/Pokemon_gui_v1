@@ -21,8 +21,8 @@ public class PicAndGif {
         "D:/Game online/PSU file/file.java/giftFile/pikachu.png",                   //14
         "D:/Game online/PSU file/file.java/giftFile/pikachuGethit.png",             //15
         "D:/Game online/PSU file/file.java/giftFile/charmanderPS.png",              //16
-        "D:/Game online/PSU file/file.java/giftFile/chatmandergethit.png",          //17
-        "D:/Game online/PSU file/file.java/giftFile/squirtlePs.png",                //18
+        "D:/Game online/PSU file/file.java/giftFile/charmandergethit.png",          //17
+        "D:/Game online/PSU file/file.java/giftFile/squirtle.png",                //18
         "D:/Game online/PSU file/file.java/giftFile/squirtlePsgethit.png",          //19
         "D:/Game online/PSU file/file.java/giftFile/pokemonRank.png",               //20
         "D:/Game online/PSU file/file.java/giftFile/pokemonRankgethit.png",          //21
@@ -31,9 +31,9 @@ public class PicAndGif {
         "D:/Game online/PSU file/file.java/giftFile/hpbar3.png",        //24
         "D:/Game online/PSU file/file.java/giftFile/hpbar4.png",         //25
         "D:/Game online/PSU file/file.java/basicGUI/pokeball.jpg",      //pokeball 26
-        "D:/Game online/PSU file/file.java/giftFile/pickachudead.png", //27
+        "D:/Game online/PSU file/file.java/giftFile/pikachudead.png", //27
         "D:/Game online/PSU file/file.java/giftFile/charmanderPSdead.png", //28
-        "D:/Game online/PSU file/file.java/giftFile/squirtlePsdead.png", //29
+        "D:/Game online/PSU file/file.java/giftFile/squirtlePsgedead.png", //29
         "D:/Game online/PSU file/file.java/giftFile/pokemonRankdead.png" //30
 
         

@@ -6,6 +6,7 @@ public class GameGUI extends JFrame
 {
     private String cmd ="";
     private String bagCmd ="";
+    private static final long serialVersionUID = 1L;
     
     public String getCmd(){
         return this.cmd;
@@ -21,7 +22,7 @@ public class GameGUI extends JFrame
     }
     public String resetCmd(){
         this.cmd="";
-        this.bagCmd="";
+        this.bagCmd="close";
         return "";
     }
 
@@ -50,23 +51,22 @@ public class GameGUI extends JFrame
         bag.setBounds(10, 10, 80, 80);
         bag.addActionListener(new ActionListener(){
             @Override
-            public void actionPerformed(ActionEvent actionEvent) {
+            public void actionPerformed(ActionEvent actionEvent){
 
-                if(bag.isSelected() && getBagCmd().equals("openbag")){
+                if(bag.isSelected()){
+                    setBagCmd("openbag");
                     bag.setIcon(new ImageIcon(g.getPicAndGif(8)));
                     SwingUtilities.updateComponentTreeUI(frame);
-                }else if(bag.isSelected() && getBagCmd().equals("close")){
-                    bag.doClick();
-                }else{
+                }
+                else{
+                    setBagCmd("close");
                     bag.setIcon(new ImageIcon(g.getPicAndGif(7)));
                     SwingUtilities.updateComponentTreeUI(frame);
-                    setBagCmd("");
                 }
-                setBagCmd("openbag");
+            
             }
         });
     //-----------------------------------------------------------
-        
 
 
 //--------------dropdown-------------------------------------------------------

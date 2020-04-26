@@ -2,6 +2,7 @@ import javax.swing.*;
 
 public class Trainner extends JFrame{
     private BagGUI bag;
+    private static final long serialVersionUID = 1L;
     
     public Trainner(){
         this.bag = new BagGUI();
@@ -48,12 +49,12 @@ public class Trainner extends JFrame{
             bagCmd = play.getBagCmd();
 
             if(bagCmd.equals("openbag")){
-                openBag("open");
                 play.setBagCmd("open");
+                openBag("open");
             }
 
             if(cmd.equals("status")){
-                choosePokeball(cmd).toStringStatus();
+                choosePokeball(cmd);//.toStringStatus();
                 cmd = play.resetCmd();
             }
             else if(cmd.equals("feed")){
@@ -84,7 +85,6 @@ public class Trainner extends JFrame{
             }
             else{
                 cmd = play.resetCmd();
-                play.setBagCmd("close");
             }
         }
         System.out.println("quit game");   
@@ -99,7 +99,7 @@ public class Trainner extends JFrame{
             System.out.println("random...");
             delay(500);
         }
-        /*if(Math.random() >= 0.5){
+        if(Math.random() >= 0.5){
             e = new PokemonC();
         }
         else if (Math.random() >= 0.2 && Math.random() < 0.5){
@@ -126,16 +126,15 @@ public class Trainner extends JFrame{
             }
             else 
                 return null;   
-        }*/
-        e = new PokemonC();
-        //else{
+        }
+        else{
             if(JOptionPane.showConfirmDialog ( ms, "Your found pokemon rank C.\nYou want to catch it?", "found it!", JOptionPane.YES_NO_OPTION )==0){
                 JOptionPane.showMessageDialog ( ms, "Choose your pokeball." );
                 return e;
             }
             else 
                 return null;
-        //}
+        }
     }
     
     private void feed(Pokemon p){
@@ -195,9 +194,10 @@ public class Trainner extends JFrame{
                     System.out.println("fighting...");
                     delay(2000);
                 }
+                p.loseExp(e.getExp());
                 resetStatus(p);
                 resetStatus(e);
-                p.loseExp(e.getExp());
+                
                 return false;
             }
             else if(enemy.equals("zeroHP")){
@@ -221,9 +221,6 @@ public class Trainner extends JFrame{
                 player = p.getAttack(e.attack());
             }
         }
-
-        //CatchGUI c = new CatchGUI(attackRound);
-        //return c.getResult();
     }
 
     private void resetStatus(Pokemon p){//after pokemon fight

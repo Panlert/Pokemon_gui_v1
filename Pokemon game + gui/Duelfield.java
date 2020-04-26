@@ -1,7 +1,5 @@
 import javax.swing.*;
 
-//import jdk.internal.platform.Container;
-
 import java.awt.*;
 import java.awt.event.*;
 public class Duelfield extends JFrame{
@@ -13,6 +11,7 @@ public class Duelfield extends JFrame{
     private JLabel eHP = new JLabel();
     private int eDead=0;
     private int pDead=0;
+    private static final long serialVersionUID = 1L;
 
     public void setAlreadyDead(int c){
         if(c == 1)
@@ -51,10 +50,10 @@ public class Duelfield extends JFrame{
         if(p.toString().equals("Pickachu")){
             pPic = new ImageIcon(g.getPicAndGif(14));
             pLabel.setIcon(pPic);
-        }else if(p.toString().equals("charmander")){
+        }else if(p.toString().equals("Charmander")){
             pPic = new ImageIcon(g.getPicAndGif(16));
             pLabel.setIcon(pPic);
-        }else if(p.toString().equals("squirtle")){
+        }else if(p.toString().equals("Squirtle")){
             pPic = new ImageIcon(g.getPicAndGif(18));
             pLabel.setIcon(pPic);
         }else{
@@ -99,11 +98,6 @@ public class Duelfield extends JFrame{
                     else if(percentHp(p) > 0 && percentHp(p) <= 50){
                         p_getHitface(eLabel, frame, 24, p);
                     }
-                    /*else if(getAlreadyDead() == -1 && percentHp(p) <= 0){
-                        System.out.println("cmd is close with alrdead");
-                        setCmd("close");
-                        frame.setVisible(false);
-                    }*/
                     else if(percentHp(p) <= 0){
                         p_deadFace(eLabel, frame, p);
                         atk.setText("finish duel");
@@ -173,9 +167,9 @@ public class Duelfield extends JFrame{
         ImageIcon pPic;
         if(pR.toString().equals("Pickachu")){
             pPic = new ImageIcon(g.getPicAndGif(14));
-        }else if(pR.toString().equals("charmander")){
+        }else if(pR.toString().equals("Charmander")){
             pPic = new ImageIcon(g.getPicAndGif(16));
-        }else if(pR.toString().equals("squirtle")){
+        }else if(pR.toString().equals("Squirtle")){
             pPic = new ImageIcon(g.getPicAndGif(18));
         }else{
             pPic = new ImageIcon(g.getPicAndGif(20));
@@ -191,11 +185,11 @@ public class Duelfield extends JFrame{
             pPic = new ImageIcon(g.getPicAndGif(15));
             pPicf = new ImageIcon(g.getPicAndGif(i));
         }
-        else if(pG.toString().equals("charmander")){
+        else if(pG.toString().equals("Charmander")){
             pPic = new ImageIcon(g.getPicAndGif(17));
             pPicf = new ImageIcon(g.getPicAndGif(i));
         }
-        else if(pG.toString().equals("squirtle")){
+        else if(pG.toString().equals("Squirtle")){
             pPic = new ImageIcon(g.getPicAndGif(19));
             pPicf = new ImageIcon(g.getPicAndGif(i));
         }
@@ -214,10 +208,10 @@ public class Duelfield extends JFrame{
         if(pD.toString().equals("Pickachu")){
             pPic = new ImageIcon(g.getPicAndGif(27));
         }
-        else if(pD.toString().equals("charmander")){
+        else if(pD.toString().equals("Charmander")){
             pPic = new ImageIcon(g.getPicAndGif(28));
         }
-        else if(pD.toString().equals("squirtle")){
+        else if(pD.toString().equals("Squirtle")){
             pPic = new ImageIcon(g.getPicAndGif(29));
         }
         else{

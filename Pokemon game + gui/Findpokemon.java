@@ -1,10 +1,10 @@
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 public class Findpokemon extends JFrame{
     private String cmd="open";
+    private static final long serialVersionUID = 1L;
 
     public String getCmd(){
         return this.cmd;

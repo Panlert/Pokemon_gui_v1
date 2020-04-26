@@ -12,6 +12,7 @@ public class PickballGUI extends JFrame
 {
     private int pokeballIndex=-1;
     private String cmd="open";
+    private static final long serialVersionUID = 1L;
 
     public int getPokeballIndex(){
         return this.pokeballIndex;
